@@ -54,7 +54,7 @@ function App() {
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Type a message..."
         />
-        <button type="submit">Send</button>
+        <button>Send</button>
       </form>
     </div>
   );
