@@ -2,12 +2,12 @@ const express = require('express');
 const { Server } = require("socket.io");
 const http = require('http');
 const cors = require('cors');
-const port = 3001;
+const port = 3000;
 
 const app = express();
 const server = http.createServer(app);
 
-app.use(cors()); // Use cors middleware
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -24,7 +24,7 @@ io.on('connection', (socket) => {
   console.log('User connected ', socket.id);
 
   socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);
+    socket.broadcast.emit('chat message', msg);
   });
 
   socket.on('disconnect', () => {
